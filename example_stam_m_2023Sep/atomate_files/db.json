@@ -1,0 +1,11 @@
+{
+	"host": "your_mongodb_hosts (like 192.168.XX.YY)",
+	"port": 27017,
+	"database": "your_fireworks_db",
+	"admin_user": "user",
+	"admin_password": "pass",
+	"readonly_user": "user",
+	"readonly_password": "pass",
+	"collection": "tasks",
+	"aliases": {}
+}

@@ -1,0 +1,9 @@
+host: 127.0.0.1
+port: 27017
+name: fireworks_ml_atomate_test
+username: ml_atomate_test
+password: ml_atomate_test
+ssl_ca_file: null
+strm_lvl: INFO
+user_indices: []
+wf_user_indices: []

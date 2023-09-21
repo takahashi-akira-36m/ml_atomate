@@ -1,0 +1,2 @@
+- This data is the result of a high-throughput calculation conducted for 7 days to test the machine learning methodology. These csv files do not contain results for all candidate crystal structures, and there are duplicates of substances in each csv file. 
+- Since DFPT calculations are performed by PBEsol, the dielectric constant may show abnormal and unrealistic values when the gap is narrow.
