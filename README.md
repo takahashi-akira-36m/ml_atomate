@@ -78,7 +78,7 @@ If we use the PTR method, the command should be like this.
 ml_atomate_path=(path to ml_atomate) 
 python ${ml_atomate_path}/ml_atomate/priority_setter.py -df db.json -bld ${ml_atomate_path}/example_stam_m_2023Sep/atomate_files/run_builder.py -dc descriptors.csv --objective bandstructure_hse.bandgap 4.0, dielectric.epsilon_avg 30.0, -ad -c no_conversion log
 ```
-We note that since PHYSBO code calculate priorities based on marginal scores, which may result in a lengthy ML procedure when dealing with numerous candidates.
+We note that since PHYSBO code calculate priorities based on marginal scores, which may make ML procedure time-consuming when dealing with the number of candidates is numerous.
 In such case, limiting the number to be prioritized by -nws (n_write_server) option or accelerating ML procedure by -nrb (n_random_basis, details are same as the num_rand_basis of physbo.policy) option would be useful.
 
 On the other hand, if you use BLOX, the command should be as follows:
@@ -132,10 +132,9 @@ https://atomate.org
 This package is distributed under GNU General Public License version 3 (GPL v3) or later. 
 We hope that you cite the following reference when you use ML-atomate code or data of example run 
 (i.e. data placed in example_stam_m_2023Sep/paper_result. This result is same as the data written in the following paper.):
-```buildoutcfg
+
 A. Takahashi, K. Terayama, Y. Kumagai, R. Tamura and F. Oba "Fully Autonomous Materials Screening Methodology Combining First-Principles Calculations, Machine Learning and High-Performance Computing System" 
-(STAM methods, https://doi.org/10.1080/27660400.2023.2261834 )
-```
+(Science and Technology of Advanced Materials: Methods, https://doi.org/10.1080/27660400.2023.2261834)
 
 ## Reference
 This code is based on atomate library.  

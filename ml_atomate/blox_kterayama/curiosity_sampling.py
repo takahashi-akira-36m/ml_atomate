@@ -1,5 +1,6 @@
 """
-This code is same as the code used in previous research implemented by Prof. Terayama (https://github.com/tsudalab/BLOX).
+This code is same as the code used in previous research implemented by Prof. Terayama
+( https://github.com/tsudalab/BLOX ).
 """
 import numpy as np
 import matplotlib.pyplot as plt

@@ -1,5 +1,6 @@
 """
 This code is created based on PHYSBO's policy.py with some modifications.
+( https://github.com/issp-center-dev/PHYSBO )
 """
 
 import copy
@@ -42,7 +43,6 @@ def range_acquisition_function_multi(predictor_list,
                                      limit: Tuple[Tuple[Optional[float], Optional[float]]],
                                      ):
     fmean, fstd = _get_fmean_fstd(predictor_list, training_list, test_list)
-    fmean_train, fstd_train = _get_fmean_fstd(predictor_list, training_list, training_list)
 
     # logger.debug(f"fmean, fstd, limit = {fmean}, {fstd}, {limit}")
     n_data = len(fmean)
@@ -135,7 +135,7 @@ def my_score(mode, predictor_list, test_list,
                                                 test_list,
                                                 limit=limit)
     else:
-        raise NotImplementedError(f"ERROR: mode must be EI, PI, TS, or RANGE. (actual: {mode})")
+        raise NotImplementedError(f"ERROR: Currently mode must be RANGE. (actual: {mode})")
 
 
 class Policy(policy):
