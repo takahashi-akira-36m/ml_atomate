@@ -1,0 +1,22 @@
+fireworks:
+  - fw: atomate.vasp.fireworks.core.OptimizeFW
+    params:
+      max_force_threshold: 10
+      ediffg: -0.005
+      force_gamma: False
+      override_default_vasp_params:
+        user_potcar_functional: PBE_54
+        user_incar_settings:
+          "GGA": "PS"
+  - fw: atomate.vasp.fireworks.core.DFPTFW
+    params:
+      user_incar_settings:
+        "ENCUT": 520
+        "ADDGRID": True
+        "SIGMA": 0.1
+        "LASPH": True
+        "GGA": "PS"
+      parents: 0
+  - fw: atomate.vasp.fireworks.core.HSEBSFW
+    params:
+      parents: 0

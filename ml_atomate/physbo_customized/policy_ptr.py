@@ -65,6 +65,10 @@ def range_acquisition_function_multi(predictor_list,
             limit_low, limit_high = limit[o]
             fm = fmean[n][o]
             fs = fstd[n][o]
+            if limit_low is None:
+                limit_low = np.NaN
+            if limit_high is None:
+                limit_high = np.NaN
             temp_low = scipy.stats.norm.cdf((limit_low - fm) / fs) if not np.isnan(limit_low) else 0
             temp_high = scipy.stats.norm.cdf((limit_high - fm) / fs) if not np.isnan(limit_high) else 1
             score = score * (temp_high - temp_low)
@@ -138,14 +142,14 @@ def my_score(mode, predictor_list, test_list,
         raise NotImplementedError(f"ERROR: Currently mode must be RANGE. (actual: {mode})")
 
 
-class Policy(policy):
+class policy_ptr(policy):
 
     new_data_list: List[Optional[variable]]
 
     def __init__(
             self, test_X: List, num_objectives, comm=None, config=None, initial_data=None, log_dir=None
     ):
-        print(f"config = {config}")
+        logger.debug(f"config = {config}")
         self._log_dir = log_dir
         self.num_objectives = num_objectives
         self.history = history(num_objectives=self.num_objectives)
@@ -188,7 +192,7 @@ class Policy(policy):
             self.mpisize = comm.size
             self.mpirank = comm.rank
             self.actions = np.array_split(self.actions, self.mpisize)[self.mpirank]
-        print(f"rank = {self.mpirank}, self.actions = {self.actions}")
+        logger.debug(f"rank = {self.mpirank}, self.actions = {self.actions}")
 
     def _model(self, i):
         training = self.training_list[i]
@@ -289,7 +293,7 @@ class Policy(policy):
 
             if len(action) == 0:
                 if self.mpirank == 0:
-                    print("WARNING: All actions have already searched.")
+                    logger.warning("WARNING: All actions have already searched.")
                 return copy.deepcopy(self.history)
 
             if simulator is None:

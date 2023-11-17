@@ -3,6 +3,9 @@ from numbers import Real
 from typing import List, Iterator, Union, Any
 
 
+TEST_DB_DIR = "/home/taka/fw_config/"
+
+
 def parse_objective(arg: List[str], mode_blox=False):
     if mode_blox:
         return arg, [[None, None] for _ in range(len(arg))]
